@@ -1,0 +1,615 @@
+@use "variables";
+@use "mixins" as *;
+@use "fonts";
+@use "utilities";
+
+// body {
+//   padding: 1rem;
+//   margin: 0;
+//   background: url("./../images/bg.jpg") no-repeat center 0;
+//   background-size: cover;
+//   height: 100%;
+//   width: 100%;
+//   box-sizing: border-box;
+//   border-radius: 20px;
+//   @include respond-to(large) {
+//     padding: 4rem 10vw;
+//   }
+// }
+
+main.supp-test-result {
+  background: rgba(252, 252, 252, 0.5);
+  backdrop-filter: blur(19.399999618530273px);
+  padding: 1rem;
+  border-radius: 20px;
+}
+// Accordion
+
+.accordion {
+  width: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+
+  .accordion-header {
+    padding: 1rem 3rem 1.25rem 1.25rem; // 8px 48px → 0.5rem 1.875rem
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-radius: 1.25rem;
+    height: auto;
+    border: 1px solid variables.$supp-black;
+    position: relative;
+
+    @include respond-to(large) {
+      flex-direction: row;
+      align-items: center;
+      border-radius: 999px;
+    }
+
+    &-step-1 {
+      background: variables.$supp-brown-light;
+    }
+    &-step-2 {
+      background: variables.$supp-gray-dark;
+      .font {
+        color: variables.$supp-white !important;
+      }
+    }
+    &-step-3 {
+      background: variables.$supp-gray-light;
+    }
+    h2,
+    h3,
+    p {
+      margin-bottom: 0.625rem;
+      @include respond-to(large) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .accordion-open-close{
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    svg.black{
+      fill: variables.$supp-black;
+    }
+    svg.white{
+      fill: variables.$supp-white;
+    }
+  }
+  .accordion-step-1 {
+    background-color: variables.$supp-brown-light;
+    padding: 2rem 1.25rem; // 40px → 2.5rem
+    gap: 1.875rem; // 20px → 1.25rem
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+
+
+    @include respond-to(large) {
+      gap: 2.5rem; // 20px → 1.25rem
+      padding: 4rem 2.5rem 2.5rem; // 40px → 2.5rem
+      grid-template-columns: 1fr 1.4fr 1fr;
+    }
+
+    .circle-left {
+      width: 33rem; // 528px → 33rem
+      height: 33rem; // 528px → 33rem
+      border: 1px solid variables.$supp-black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 999px;
+      transform: translate(-50%, -60%);
+      z-index: 10;
+    }
+
+    .circle-center {
+      width: 15rem;
+      height: 15rem;
+      background: variables.$supp-brown-dark;
+      position: absolute;
+      border-radius: 999px;
+      z-index: 10;
+      display: none;
+
+      @include respond-to(large) {
+        display: block;
+        width: 33rem;
+        height: 33rem;
+        bottom: 0;
+        left: 63%;
+        transform: translate(-50%, 60%);
+      }
+    }
+
+    .circle-right {
+      width: 20rem;
+      height: 20rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate(50%, 50%);
+      border-radius: 999px;
+      background: variables.$supp-brown-dark;
+      z-index: 10;
+
+      @include respond-to(large) {
+        top: 0;
+        transform: translate(50%, -50%);
+      }
+    }
+
+    .step-info {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @include respond-to(medium) {
+        grid-template-columns: 0.6fr 1fr;
+      }
+      @include respond-to(large) {
+        grid-template-columns: 1fr;
+      }
+
+      .text-left {
+        margin-top: 3rem;
+        @include respond-to(medium) {
+          margin-top: 2rem;
+        }
+      }
+
+      .step {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        z-index: 20;
+        margin-left: 3.2rem;
+        @include respond-to(medium) {
+          margin-left: 4rem;
+        }
+
+        .step-circle {
+          width: 6.25rem; // 100px → 6.25rem
+          height: 6.25rem; // 100px → 6.25rem
+          border-radius: 50%;
+          background-color: variables.$supp-brown-dark;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem; // 19px → 1.2rem
+          margin-left: -1rem; // -16px → -1rem
+        }
+      }
+    }
+
+    .image-banner {
+      position: relative;
+      z-index: 20;
+      border: 1px solid variables.$supp-black;
+      border-radius: 0.625rem;
+      width: 100%;
+      padding: 0.875rem 0.875rem 0 0;
+  
+      @include respond-to(medium) {
+        width: 72%;
+        transform: translateX(20%);
+      }
+      @include respond-to(large) {
+        transform: translateX(0);
+        width: 100%;
+      }
+      img {
+        border-radius: 0.625rem;
+      }
+    }
+
+    .product-description {
+      position: relative;
+      z-index: 20;
+
+      @include respond-to(large) {
+        padding-right: 3.125rem;
+      }
+
+      .icon {
+        display: flex;
+        justify-content: center;
+        margin: 1.875rem 0;
+
+        img {
+          width: 6rem;
+
+          @include respond-to(medium) {
+            width: 8rem;
+          }
+          @include respond-to(large) {
+            width: 4rem;
+          }
+        }
+      }
+
+      p {
+        padding-right: 2.5rem;
+      }
+    }
+  }
+
+  .accordion-step-2 {
+    background-color: variables.$supp-gray-dark;
+    gap: 1.875rem; // 20px → 1.25rem
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+
+
+    .step-2-banner {
+      position: relative;
+      z-index: 20;
+      width: 100%;
+  
+      height: 370px;
+      overflow: hidden;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .step {
+        position: absolute;
+        display: flex;
+        align-items: flex-start;
+        z-index: 20;
+        margin-left: 2.5rem;
+        top: 4rem;
+        @include respond-to(medium) {
+          margin-left: 5.25rem;
+        }
+
+        .step-circle {
+          width: 6.25rem; // 100px → 6.25rem
+          height: 6.25rem; // 100px → 6.25rem
+          border-radius: 50%;
+          background-color: variables.$supp-gray-dark;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem; // 19px → 1.2rem
+          margin-left: -1rem; // -16px → -1rem
+          span {
+            color: variables.$supp-white;
+          }
+        }
+      }
+    }
+    .step-2-content {
+      position: relative;
+      display: grid;
+      padding: 1.25rem;
+      grid-template-columns: 1fr;
+      @include respond-to(medium) {
+        grid-template-columns: 0.5fr 0.1fr 1fr;
+      }
+
+      .font {
+        color: variables.$supp-white;
+      }
+    }
+
+    .circle {
+      width: 20rem; // 528px → 33rem
+      height: 20rem; // 528px → 33rem
+      border: 1px solid variables.$supp-white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 999px;
+      transform: translate(40%, -80%);
+      z-index: 10;
+    }
+    .step-2-text-left {
+      position: relative;
+    }
+    .step-2-text-right {
+      margin-top: 4rem;
+      @include respond-to(medium) {
+        margin-top: 0;
+      }
+    }
+    .step-2-divider {
+      width: 1px;
+      background: variables.$supp-white;
+      height: 100%;
+      margin: 0 5rem;
+      @include respond-to(medium) {
+        margin: 0 3rem;
+      }
+
+    }
+    .icon {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      img {
+        width: 6rem;
+        margin-top: -1.3rem;
+        @include respond-to(medium) {
+          width: 8rem;
+        }
+        @include respond-to(large) {
+          width: 4rem;
+        }
+      }
+    }
+    .btn {
+      background: variables.$supp-blue;
+      display: flex;
+      align-items: center;
+      border-radius: 999px;
+      text-decoration: none;
+      color: variables.$supp-gray-dark !important;
+      padding: 0 3.5rem;
+      text-align: center;
+      overflow: hidden;
+      width: 100%;
+  
+      height: 44px;
+      span{
+        width: 100%;
+        z-index: 20;
+        position: relative;
+      }
+      @include respond-to(medium) {
+        width: 200px;
+      }
+    }
+  }
+
+  .accordion-step-3 {
+    background-color: variables.$supp-gray-light;
+    padding: 2rem 1.25rem; // 40px → 2.5rem
+    gap: 1.875rem; // 20px → 1.25rem
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+
+
+    @include respond-to(large) {
+      gap: 2.5rem; // 20px → 1.25rem
+      padding: 4rem 2.5rem 2.5rem; // 40px → 2.5rem
+      grid-template-columns: 0.8fr 1fr 1fr;
+    }
+
+    .circle-left {
+      width: 33rem; // 528px → 33rem
+      height: 33rem; // 528px → 33rem
+      border: 1px solid variables.$supp-black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 999px;
+      transform: translate(-73%, -69%);
+      z-index: 10;
+    }
+
+    .circle-center {
+      width: 15rem;
+      height: 15rem;
+      border: 1px solid variables.$supp-black;
+      position: absolute;
+      border-radius: 999px;
+      z-index: 10;
+      display: none;
+
+      @include respond-to(large) {
+        bottom: 0;
+        right: 0;
+        display: block;
+        transform: translate(-10%, 65%);
+      }
+    }
+
+    .circle-right {
+      width: 20rem;
+      height: 20rem;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: translate(63%, 64%);
+      border-radius: 999px;
+      border: 1px solid variables.$supp-black;
+      z-index: 10;
+
+      @include respond-to(large) {
+        right: 0;
+        top: 0;
+        transform: translate(63%, -44%);
+      }
+    }
+
+    .step-info {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      @include respond-to(medium) {
+        grid-template-columns: 0.6fr 1fr;
+      }
+      @include respond-to(large) {
+        grid-template-columns: 1fr;
+      }
+
+      .text-left {
+        margin-top: 3rem;
+        @include respond-to(medium) {
+          margin-top: 2rem;
+        }
+      }
+
+      .step {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        z-index: 20;
+        margin-left: 3.2rem;
+        @include respond-to(medium) {
+          margin-left: 4rem;
+        }
+
+        .step-circle {
+          width: 6.25rem; // 100px → 6.25rem
+          height: 6.25rem; // 100px → 6.25rem
+          border-radius: 50%;
+          background-color: variables.$supp-gray-dark;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem; // 19px → 1.2rem
+          margin-left: -1rem; // -16px → -1rem
+          .font {
+            color: variables.$supp-white;
+          }
+        }
+      }
+    }
+
+    .image-banner {
+      position: relative;
+      z-index: 20;
+      border: 1px solid variables.$supp-black;
+      border-radius: 0.625rem;
+      width: 100%;
+      padding: 0.875rem 0.875rem 0 0;
+  
+      @include respond-to(medium) {
+        width: 72%;
+        transform: translateX(20%);
+      }
+      @include respond-to(large) {
+        transform: translateX(0);
+        width: 100%;
+      }
+      img {
+        border-radius: 0.625rem;
+      }
+    }
+
+    .product-description {
+      position: relative;
+      z-index: 20;
+      margin-top: 2rem;
+
+      .icon {
+        display: flex;
+        justify-content: center;
+        margin: 1.875rem 0;
+
+        img {
+          width: 6rem;
+
+          @include respond-to(medium) {
+            width: 8rem;
+          }
+          @include respond-to(large) {
+            width: 4rem;
+          }
+        }
+      }
+      .btn {
+        background: variables.$supp-gray-dark;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        text-decoration: none;
+        color: variables.$supp-white !important;
+        padding: 0 3.5rem;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+    
+        height: 44px;
+        @include respond-to(medium) {
+          width: auto;
+        }
+        span{
+          position: relative;
+          z-index: 20;
+        }
+      }
+    }
+  }
+
+}
+.arrow {
+  transition: transform 0.3s ease;
+}
+.arrow.rotate {
+  transform: rotate(180deg);
+  transition: all ease-in-out .3s;
+}
+
+// Video
+.supp-video{
+  iframe{
+    width: 100%;
+    height: 200px;
+    border-radius: 1.25rem;
+    @include respond-to(large) {
+      width: 100%;
+      height: 500px;
+    }
+  }   
+}
+.socialmedia{
+  background: variables.$supp-black;
+  border-radius: 1.25rem;
+  padding: 2.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .logo{
+    width: 160px;
+  }
+  .font{
+    color: variables.$supp-white;
+  }
+  p{
+    @include respond-to(large) {
+      max-width: 70%;
+    }
+  }
+  .social-links{
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    a{
+      width: 82px;
+      height: 82px;
+      display: block;
+      overflow: hidden;
+      border-radius: 999px;
+      img{
+        position: relative;
+        z-index: 20;
+      }
+    }
+  }
+}

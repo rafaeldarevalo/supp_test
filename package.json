@@ -1,0 +1,14 @@
+{
+  "name": "supp",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "sass": "sass src/scss:src/css --watch"
+  },
+  "author": "Rafael Arevalo",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.81.0"
+  }
+}

@@ -9,7 +9,7 @@ accordionHeaders.forEach((header, index) => {
         
         // Obtener la flecha de este header
         const currentArrow = header.querySelector('.js-arrow');
-        
+            
         // Toggle de la clase supp-hidden en el contenido
         if (accordionContent.classList.contains('supp-hidden')) {
             // Cerrar todos los demás acordeones primero

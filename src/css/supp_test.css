@@ -249,19 +249,7 @@ div, h2, h3, h4, a, span, ul, li {
   }
 }
 body {
-  padding: 1rem !important;
-  margin: 0 !important;
-  background: url("./../images/bg.jpg") no-repeat center 0 !important;
-  background-size: cover !important;
-  height: 100% !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  border-radius: 20px !important;
-}
-@media (min-width: 992px) {
-  body {
-    padding: 4rem 10vw !important;
-  }
+  background: nonde !important;
 }
 
 .results .lq-wrapper {
@@ -610,11 +598,10 @@ body {
   align-items: center !important;
   border-radius: 999px !important;
   text-decoration: none !important;
-  padding: 0 2.45rem !important;
+  padding: 0.625rem 4.45rem !important;
   text-align: center !important;
   overflow: hidden !important;
   width: 100% !important;
-  height: 1.925rem !important;
 }
 .accordion .accordion-step-2 .btn span {
   width: 100% !important;
@@ -790,11 +777,10 @@ body {
   justify-content: center !important;
   border-radius: 999px !important;
   text-decoration: none !important;
-  padding: 0 2.45rem !important;
+  padding: 0.625rem 2.45rem !important;
   text-align: center !important;
   overflow: hidden !important;
   width: 100% !important;
-  height: 1.925rem !important;
 }
 @media (min-width: 768px) {
   .accordion .accordion-step-3 .product-description .btn {
